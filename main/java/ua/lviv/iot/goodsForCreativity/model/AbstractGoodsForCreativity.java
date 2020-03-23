@@ -18,6 +18,16 @@ public abstract class AbstractGoodsForCreativity {
 		this.minimumAgeForUsing = minimumAgeForUsing;
 	}
 
+	public String getHeaders() {
+		return "name," + "kind," + "priceInUAH," + "countryOfProducing," + "minimumAgeForUsing";
+
+	}
+
+	public String toCSV() {
+		return getName() + "," + getKind() + "," + getPriceInUAH() + "," + getCountryOfProducing() + ","
+				+ getMinimumAgeForUsing();
+	}
+
 	public String getName() {
 		return name;
 	}
