@@ -1,30 +1,27 @@
 package ua.lviv.iot.goodsForCreativity;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import ua.lviv.iot.goodsForCreativity.manager.GoodsForCreativityManager;
 import ua.lviv.iot.goodsForCreativity.model.AbstractGoodsForCreativity;
-
-import org.junit.jupiter.api.Test;
 
 class GoodsForCreativityManagerTest extends BaseGoodsForCreativityTest {
 
 	public GoodsForCreativityManager goodsForCreativityManager;
 
 	@BeforeEach
-	public void setUp()  {
+	public void setUp() {
 		goodsForCreativityManager = new GoodsForCreativityManager();
 		goodsForCreativityManager.addGoods(goods);
 	}
 
 	@Test
-	public void findByMinimumAgeForUsing() {
+	public void testFindByMinimumAgeForUsing() {
 		List<AbstractGoodsForCreativity> result = goodsForCreativityManager.findByMinimumAgeForUsing(3);
 		assertEquals(1, result.size());
 

@@ -1,20 +1,17 @@
 package ua.lviv.iot.goodsForCreativity;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import ua.lviv.iot.goodsForCreativity.manager.GoodsForCreativityManager;
 import ua.lviv.iot.goodsForCreativity.manager.GoodsForCreativityManagerUtils;
 import ua.lviv.iot.goodsForCreativity.model.SortType;
 
-import org.junit.jupiter.api.Test;
 
 class GoodsForCreativityManagerUtilsTest extends BaseGoodsForCreativityTest {
 
 	@Test
-	public void testSortGoodsByNameAcsending() {
+	public void testSortGoodsByNameDescending() {
 		GoodsForCreativityManagerUtils.sortGoodsByName(goods, SortType.DESC);
 		assertEquals("Parker", goods.get(0).getName());
 		assertEquals("Oliver", goods.get(1).getName());
@@ -23,7 +20,7 @@ class GoodsForCreativityManagerUtilsTest extends BaseGoodsForCreativityTest {
 	}
 
 	@Test
-	public void testSortGoodsByNameDescending() {
+	public void testSortGoodsByNameAscending() {
 		GoodsForCreativityManagerUtils.sortGoodsByName(goods, SortType.ASC);
 		assertEquals("Applique", goods.get(0).getName());
 		assertEquals("Kilimok", goods.get(1).getName());

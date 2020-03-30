@@ -1,18 +1,16 @@
 package ua.lviv.iot.goodsForCreativity;
 import java.util.LinkedList;
+
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 
 import ua.lviv.iot.goodsForCreativity.model.AbstractGoodsForCreativity;
-import ua.lviv.iot.goodsForCreativity.model.Pencil;
+import ua.lviv.iot.goodsForCreativity.model.KindOfProduct;
 import ua.lviv.iot.goodsForCreativity.model.Mosaics;
 import ua.lviv.iot.goodsForCreativity.model.PaperForApplique;
 import ua.lviv.iot.goodsForCreativity.model.Pen;
-import ua.lviv.iot.goodsForCreativity.model.KindOfProduct;
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import ua.lviv.iot.goodsForCreativity.model.Pencil;
 
 public abstract class BaseGoodsForCreativityTest {
 
