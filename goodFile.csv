@@ -1,0 +1,8 @@
+name,kind,priceInUAH,countryOfProducing,minimumAgeForUsing
+Oliver,GOODS_FOR_DRAWING,100.6,Germany,3
+name,kind,priceInUAH,countryOfProducing,minimumAgeForUsing
+Kilimok,GOODS_FOR_MOSAICS,130.7,Japan,6
+name,kind,priceInUAH,countryOfProducing,minimumAgeForUsing
+Applique,GOODS_FOR_APPLIQUE,145.5,France,1
+name,kind,priceInUAH,countryOfProducing,minimumAgeForUsing
+Parker,GOODS_FOR_DRAWING,160.5,Columbia,5
