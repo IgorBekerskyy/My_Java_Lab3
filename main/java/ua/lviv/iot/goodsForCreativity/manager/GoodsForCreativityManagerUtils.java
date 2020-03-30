@@ -1,63 +1,57 @@
 package ua.lviv.iot.goodsForCreativity.manager;
+
 import java.util.Comparator;
 import java.util.List;
-
 import ua.lviv.iot.goodsForCreativity.model.AbstractGoodsForCreativity;
 import ua.lviv.iot.goodsForCreativity.model.SortType;
 
 public class GoodsForCreativityManagerUtils {
 
-	private static final MinimumAgeForUsingComparator MINIMUM_AGE_FOR_USING_COMPARATOR = new MinimumAgeForUsingComparator();
+  class GoodsSorterByPriceInUAH implements Comparator<AbstractGoodsForCreativity> {
 
-	public static void sortGoodsByMinimumAgeForUsing (List<AbstractGoodsForCreativity> goods , SortType sortType) {
-		goods.sort(sortType == SortType.ASC ? MINIMUM_AGE_FOR_USING_COMPARATOR : MINIMUM_AGE_FOR_USING_COMPARATOR.reversed());
-	}
+    @Override
+    public int compare(AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
+      return Double.compare(firstGood.getPriceInUAH(), secondGood.getPriceInUAH());
+    }
+  }
 
-	// sorting by static inner class
-	public static class MinimumAgeForUsingComparator implements Comparator<AbstractGoodsForCreativity> {
+  static class GoodsSorterByMinimumAgeForUsing implements Comparator<AbstractGoodsForCreativity> {
 
-		@Override
-		public int compare(AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
-			if (firstGood.getMinimumAgeForUsing() > secondGood.getMinimumAgeForUsing()) {
-				return 1;
-			} else if (firstGood.getMinimumAgeForUsing() < secondGood.getMinimumAgeForUsing()) {
-				return -1;
-			}
-			return 0;
-		}
-	}
+    @Override
+    public int compare(AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
 
-	public static void sortGoodsByPriceInUAH( List<AbstractGoodsForCreativity> goods, SortType sortType,
-			Comparator<AbstractGoodsForCreativity> priceInUAHComparator) {
+      return firstGood.getMinimumAgeForUsing() - secondGood.getMinimumAgeForUsing();
+    }
 
-		goods.sort(sortType == SortType.ASC ? priceInUAHComparator : priceInUAHComparator.reversed());
-	}
+  }
 
-	// sorting by inner class
-	public class PriceInUAHComparator implements Comparator<AbstractGoodsForCreativity> {
+  private static final GoodsSorterByMinimumAgeForUsing GOODS_SORTER_BY_MINIMUM_AGE_FOR_USING = new GoodsSorterByMinimumAgeForUsing();
 
-		@Override
-		public int compare( AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
-			if (firstGood.getPriceInUAH() > secondGood.getPriceInUAH()) {
-				return 1;
-			} else if (firstGood.getPriceInUAH() < secondGood.getPriceInUAH()) {
-				return -1;
-			}
-			return 0;
-		}
-	}
+  // sort using inner class
 
-	// sort using anonymous class
+  public static void sortGoodsByPriceInUAH(List<AbstractGoodsForCreativity> goods, SortType sortType) {
+    GoodsSorterByPriceInUAH comparator = new GoodsForCreativityManagerUtils().new GoodsSorterByPriceInUAH();
+    goods.sort(sortType == SortType.ASC ? comparator : comparator.reversed());
+  }
 
-	public static void sortGoodsByName(List<AbstractGoodsForCreativity> goods, SortType sortType) {
-		Comparator<AbstractGoodsForCreativity> comparator = new Comparator<AbstractGoodsForCreativity>() {
+  // sort using static inner class
 
-			@Override
-			public int compare(AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
-				return firstGood.getName().compareTo(secondGood.getName());
-			}
-		};
-		goods.sort(sortType == SortType.ASC ? comparator : comparator.reversed());
-	}
+  public static void sortGoodsByMinimumAgeForUsing(List<AbstractGoodsForCreativity> goods, SortType sortType) {
+    goods.sort(sortType == SortType.ASC ? GOODS_SORTER_BY_MINIMUM_AGE_FOR_USING
+        : GOODS_SORTER_BY_MINIMUM_AGE_FOR_USING.reversed());
+  }
+
+  // sort using anonymous class
+
+  public static void sortGoodsByName(List<AbstractGoodsForCreativity> goods, SortType sortType) {
+    Comparator<AbstractGoodsForCreativity> comparator = new Comparator<AbstractGoodsForCreativity>() {
+
+      @Override
+      public int compare(AbstractGoodsForCreativity firstGood, AbstractGoodsForCreativity secondGood) {
+        return firstGood.getName().compareTo(secondGood.getName());
+      }
+    };
+    goods.sort(sortType.equals(SortType.ASC) ? comparator : comparator.reversed());
+  }
 
 }
