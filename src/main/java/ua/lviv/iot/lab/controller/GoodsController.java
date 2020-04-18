@@ -30,8 +30,7 @@ public class GoodsController {
   }
 
   @GetMapping(path = "/{id}")
-  public Pen getLamp(final @PathVariable("id") Integer goodId) {
-    // to do : check if id exists
+  public Pen getGood(final @PathVariable("id") Integer goodId) {
     return goods.get(goodId);
   }
 
