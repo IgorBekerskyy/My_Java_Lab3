@@ -2,11 +2,11 @@ package ua.lviv.iot.lab.model;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
 import org.springframework.data.annotation.Id;
-
 import ua.lviv.iot.lab.model.KindOfProduct;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class AbstractGoodsForCreativity {
 
   @Id
